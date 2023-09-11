@@ -41,11 +41,7 @@ const createRealEstate = async ({
 };
 
 const readRealEstates = async (): Promise<RealEstateRead> => {
-  return RealEstateReadSchema.parse(await realEstateRepo.find({
-    relations: {
-      address: true,
-    }
-  }));
+  return RealEstateReadSchema.parse(await realEstateRepo.find());
 };
 
 export default {

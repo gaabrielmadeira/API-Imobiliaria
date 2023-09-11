@@ -17,6 +17,7 @@ SchedulesRouter.get("/realEstate/:id",
 validateToken, 
 verificPermission,
 realEstateExists,
+schedulesController.retrieveScheduleRealEstates
 );
 
 export default SchedulesRouter;

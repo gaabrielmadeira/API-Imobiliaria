@@ -14,10 +14,10 @@ class Schedule {
   @Column({ type: "time" })
   hour: string;
 
-  @ManyToOne(() => RealEstate, (schedule) => schedule.schedule)
+  @ManyToOne(() => RealEstate, (re) => re.schedules)
   realEstate: RealEstate;
   
-  @ManyToOne(() => User, (schedule) => schedule.schedule)
+  @ManyToOne(() => User, (u) => u.schedules, {eager: true})
   user: User;
 };
 

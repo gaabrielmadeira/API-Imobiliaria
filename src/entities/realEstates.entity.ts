@@ -23,15 +23,15 @@ class RealEstate {
   @UpdateDateColumn({ type: "date" })
   updatedAt: string | Date;
 
-  @OneToOne(() => Address)
+  @OneToOne(() => Address, {eager: true})
   @JoinColumn()
   address: Address;
 
-  @ManyToOne(() => Category, (Category) => Category.realEstate)
+  @ManyToOne(() => Category, (ctg) => ctg.realEstate)
   category: Category;
 
-  @OneToMany(() => Schedule, (realEstate) => realEstate.realEstate)
-  schedule: Schedule[];
+  @OneToMany(() => Schedule, (sch) => sch.realEstate)
+  schedules: Schedule[];
 };
 
 export default RealEstate;

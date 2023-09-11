@@ -8,6 +8,14 @@ const createSchedule = async (req: Request, res: Response): Promise<Response> =>
   return res.status(201).json({ message: "Schedule created" })
 };
 
+const retrieveScheduleRealEstates = async (req: Request, res: Response): Promise<Response> => {
+  const { id } = req.params;
+  const schedules = await schedulesService.retrieveScheduleRealEstates(Number(id))
+
+  return res.status(200).json(schedules)
+};
+
 export default {
-  createSchedule
+  createSchedule,
+  retrieveScheduleRealEstates
 };
