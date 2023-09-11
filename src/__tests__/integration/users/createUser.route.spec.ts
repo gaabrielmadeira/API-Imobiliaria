@@ -2,7 +2,7 @@ import supertest from 'supertest';
 import { Any, DataSource } from 'typeorm';
 import app from '../../../app';
 import { AppDataSource } from '../../../data-source';
-import { User } from '../../../entities';
+import { User } from '../../../entities/@index';
 import { createUserRouteMock } from '../../mocks';
 
 describe('POST /users', () => {

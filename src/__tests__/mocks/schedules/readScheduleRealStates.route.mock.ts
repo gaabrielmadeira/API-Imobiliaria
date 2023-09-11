@@ -6,7 +6,7 @@ import {
   RealEstate,
   Schedule,
   User,
-} from '../../../entities';
+} from '../../../entities/@index';
 
 type iRealEstateRepo = Repository<RealEstate>;
 type iAddressRepo = Repository<Address>;

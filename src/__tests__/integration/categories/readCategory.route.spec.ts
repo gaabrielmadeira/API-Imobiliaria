@@ -2,7 +2,7 @@ import supertest from "supertest";
 import { DataSource } from "typeorm";
 import app from "../../../app";
 import { AppDataSource } from "../../../data-source";
-import { Category } from "../../../entities";
+import { Category } from "../../../entities/@index";
 import { readCategoryRouteMock } from "../../mocks";
 
 describe("GET /categories", () => {
