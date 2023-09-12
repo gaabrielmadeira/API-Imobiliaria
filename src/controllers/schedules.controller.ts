@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { schedulesService } from "../services";
+import RealEstate from "../entities/realEstates.entity";
 
 const createSchedule = async (req: Request, res: Response): Promise<Response> => {
   const userId = res.locals.decoded.sub;
@@ -10,9 +11,9 @@ const createSchedule = async (req: Request, res: Response): Promise<Response> =>
 
 const retrieveScheduleRealEstates = async (req: Request, res: Response): Promise<Response> => {
   const { id } = req.params;
-  const schedules = await schedulesService.retrieveScheduleRealEstates(Number(id))
+  const schedulesRealEstate: RealEstate = await schedulesService.retrieveScheduleRealEstates(Number(id))
 
-  return res.status(200).json(schedules)
+  return res.status(200).json(schedulesRealEstate)
 };
 
 export default {

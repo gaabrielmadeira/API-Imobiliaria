@@ -3,7 +3,7 @@ import RealEstate from "../entities/realEstates.entity";
 import Schedule from "../entities/schedules.entity";
 import { AppError } from "../errors";
 import { SchedulesCreate } from "../interfaces";
-import { realEstateRepo, scheduleRepo, userRepo } from "../repositories";
+import { realEstateRepo, scheduleRepo } from "../repositories";
 
 const createSchedule = async (payload: SchedulesCreate, userId: number): Promise<void> => {
   const { date, hour, realEstateId } = payload;
@@ -59,7 +59,7 @@ const createSchedule = async (payload: SchedulesCreate, userId: number): Promise
   await scheduleRepo.save(scheduleCreate);
 };
 
-const retrieveScheduleRealEstates = async (realEstateId: number): Promise<any> => {
+const retrieveScheduleRealEstates = async (realEstateId: number): Promise<RealEstate> => {
   const foundRealEstateSchedules: RealEstate = (await realEstateRepo.findOne({
     where: {
       id: realEstateId

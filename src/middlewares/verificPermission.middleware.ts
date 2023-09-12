@@ -6,10 +6,16 @@ const verificPermission = (req: Request, res: Response, next: NextFunction): voi
   const { id } = req.params;
 
   if (admin) return next();
-  
-  if (id !== sub) throw new AppError("Insufficient permission", 403);
 
-  return next();
+  if (req.method != "GET") {
+
+    if (id !== sub) throw new AppError("Insufficient permission", 403);
+
+    return next();
+  } 
+    
+  throw new AppError("Insufficient permission", 403);
+  
 };
 
 export default verificPermission;
