@@ -32,12 +32,6 @@ const createSchedule = async (payload: SchedulesCreate, userId: number): Promise
     409
   )
 
-  const realEstateExists: RealEstate | null = await realEstateRepo.findOneBy({
-    id: realEstateId
-  })
-
-  if (!realEstateExists) throw new AppError("RealEstate not found", 404);
-
   const scheduleExists: Schedule | null = await scheduleRepo.findOneBy({
     date,
     hour
