@@ -17,7 +17,7 @@ const readCategory = async (): Promise<CategoryRead> => {
   return CategoryReadSchema.parse(await categoryRepo.find())
 };
 
-const retrieve = async (categoryId: number): Promise<CategoryRealEstateReturn> => {
+const retrieveCategory = async (categoryId: number): Promise<CategoryRealEstateReturn> => {
   const foundCategory: Category | null = await categoryRepo.findOne({
     where: {
       id: categoryId
@@ -35,5 +35,5 @@ const retrieve = async (categoryId: number): Promise<CategoryRealEstateReturn> =
 export default {
   createCategory,
   readCategory,
-  retrieve
+  retrieveCategory
 };

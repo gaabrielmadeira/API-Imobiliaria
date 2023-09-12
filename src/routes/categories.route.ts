@@ -16,6 +16,6 @@ categoriesController.createCategory
 
 CategoriesRouter.get("", categoriesController.readCategory);
 
-CategoriesRouter.get("/:id/realEstate", categoriesController.retrieve);
+CategoriesRouter.get("/:id/realEstate", categoriesController.retrieveCategory);
 
 export default CategoriesRouter;
