@@ -1,1 +1,1 @@
-Através da aplicação é possível realizar o cadastro de imóveis e de usuários interessados na aquisição de propriedades. Além disso, é ser possível realizar o agendamento e consultar horários de visitas às propriedades disponíveis no banco de dados da imobiliária.
+Através desta aplicação é possível realizar o cadastro de imóveis e de usuários interessados na aquisição dos mesmos. Além disso, é ser possível realizar o agendamento e consultar horários de visitas às propriedades disponíveis no banco de dados da imobiliária.
