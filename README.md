@@ -21,7 +21,7 @@ Esta API permite realizar o cadastro de imóveis e de usuários interessados na 
    POSTGRES_DB=imobiliaria
    POSTGRES_PASSWORD=1234
 
-  - Execute o comando ####Docker-compose up no seu terminal.
+  - Execute o comando ###Docker-compose up no seu terminal.
 
 ## Sem docker:
   - Configure o arquivo .env:
