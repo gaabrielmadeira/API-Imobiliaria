@@ -1,0 +1,567 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API Imobiliária",
+    "description": "Documentação para Real Estate API",
+    "version": "1.0.0"
+  },
+  "basePath": "/",
+  "paths": {
+    "/users": {
+      "post": {
+        "summary": "Cria um novo usuário",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "Gabriel Madeira",
+                  "email": "madeira@mail.com",
+                  "admin": true
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": 1,
+                  "name": "Gabriel Madeira",
+                  "email": "madeira@mail.com",
+                  "admin": true,
+                  "createdAt": "2023-11-26",
+                  "updatedAt": "2023-11-26",
+                  "deletedAt": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Obtém a lista de usuários",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": 1,
+                    "name": "Gabriel",
+                    "email": "madeira@mail.com",
+                    "admin": true,
+                    "createdAt": "2024-01-10",
+                    "updatedAt": "2024-01-10",
+                    "deletedAt": null
+                  },
+                  {
+                    "id": 2,
+                    "name": "João",
+                    "email": "joão@mail.com",
+                    "admin": false,
+                    "createdAt": "2024-01-10",
+                    "updatedAt": "2024-01-10",
+                    "deletedAt": null
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Autentica um usuário e retorna um token",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "email": "madeira@mail.com",
+                "password": "12345"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hZGVpcmFAbWFpbC5jb20iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNzA0ODk9NDQ1LCJleHAiOjE3MDQ5MzU0NDUsInN1YiI6IjMifQ.-L3rIzJyJz7VGPFsLFD04S_hnIIGXe0I4pNjSp2XKUs"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/:id": {
+      "patch": {
+        "summary": "Atualiza informações de um usuário",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "email": "gabriel@mail.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "email": "gabriel@mail.com"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove um usuário",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/categories": {
+      "post": {
+        "summary": "Cria uma nova categoria",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "name": "Apartamento"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": 1,
+                  "name": "Apartamento"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Obtém a lista de categorias",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": 1,
+                    "name": "Apartamento"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categories/:id/realEstate": {
+      "get": {
+        "summary": "Obtém a lista de imóveis por categoria",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": 1,
+                  "name": "Apartamento",
+                  "realEstate": [
+                    {
+                      "id": 1,
+                      "sold": false,
+                      "value": "20000.00",
+                      "size": 150,
+                      "createdAt": "2024-01-10",
+                      "updatedAt": "2024-01-10",
+                      "address": {
+                        "id": 1,
+                        "street": "Rua sete",
+                        "zipCode": "609949",
+                        "number": 65,
+                        "city": "Porto Alegre",
+                        "state": "RS"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/realEstate": {
+      "post": {
+        "summary": "Cria um novo imóvel",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  },
+                  "size": {
+                    "type": "integer"
+                  },
+                  "address": {
+                    "type": "object",
+                    "properties": {
+                      "street": {
+                        "type": "string"
+                      },
+                      "zipCode": {
+                        "type": "string"
+                      },
+                      "number": {
+                        "type": "integer"
+                      },
+                      "city": {
+                        "type": "string"
+                      },
+                      "state": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "categoryId": {
+                    "type": "integer"
+                  }
+                },
+                "example": {
+                  "value": "20000",
+                  "size": 150,
+                  "address": {
+                    "street": "Rua sete",
+                    "zipCode": "609949",
+                    "number": 65,
+                    "city": "Porto Alegre",
+                    "state": "RS"
+                  },
+                  "categoryId": 1
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "example": {
+                  "value": "20000.00",
+                  "size": 150,
+                  "address": {
+                    "id": 1,
+                    "street": "Rua sete",
+                    "zipCode": "609949",
+                    "number": 65,
+                    "city": "Porto Alegre",
+                    "state": "RS"
+                  },
+                  "category": {
+                    "id": 1,
+                    "name": "Apartamento"
+                  },
+                  "id": 1,
+                  "sold": false,
+                  "createdAt": "2024-01-10",
+                  "updatedAt": "2024-01-10"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Obtém a lista de imóveis",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": 1,
+                    "sold": false,
+                    "value": "20000.00",
+                    "size": 150,
+                    "createdAt": "2024-01-10",
+                    "updatedAt": "2024-01-10",
+                    "address": {
+                      "id": 1,
+                      "street": "Rua sete",
+                      "zipCode": "609949",
+                      "number": 65,
+                      "city": "Porto Alegre",
+                      "state": "RS"
+                    }
+                  },
+                  {
+                    "id": 2,
+                    "sold": false,
+                    "value": "10000.00",
+                    "size": 250,
+                    "createdAt": "2024-01-11",
+                    "updatedAt": "2024-01-11",
+                    "address": {
+                      "id": 2,
+                      "street": "Rua oito",
+                      "zipCode": "606547",
+                      "number": 67,
+                      "city": "São Paulo",
+                      "state": "SP"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schedules": {
+      "post": {
+        "summary": "Marca uma visita",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "date": {
+                    "type": "string"
+                  },
+                  "hour": {
+                    "type": "string"
+                  },
+                  "realEstateId": {
+                    "type": "integer"
+                  }
+                },
+                "example": {
+                  "date": "2024/01/19",
+                  "hour": "15:30",
+                  "realEstateId": 2
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "Schedule created"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schedules/realEstate/:id": {
+      "get": {
+        "summary": "Lista as visitas marcadas para um imóvel buscado através de um id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": 2,
+                  "sold": false,
+                  "value": "100000.00",
+                  "size": 250,
+                  "createdAt": "2024-01-11",
+                  "updatedAt": "2024-01-11",
+                  "schedules": [
+                    {
+                      "id": 1,
+                      "date": "2024-01-19",
+                      "hour": "15:30:00",
+                      "user": {
+                        "id": 1,
+                        "name": "Gabriel",
+                        "email": "madeira@mail.com",
+                        "admin": true,
+                        "createdAt": "2024-01-18",
+                        "updatedAt": "2024-01-18",
+                        "deletedAt": null
+                      }
+                    }
+                  ],
+                  "category": {
+                    "id": 1,
+                    "name": "Apartamento"
+                  },
+                  "address": {
+                    "id": 2,
+                    "street": "Rua oito",
+                    "zipCode": "606547",
+                    "number": 67,
+                    "city": "São Paulo",
+                    "state": "SP"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  }
+}
