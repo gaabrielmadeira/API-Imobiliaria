@@ -35,5 +35,12 @@ Esta API permite realizar o cadastro de imóveis e de usuários interessados na 
   - npm run dev;
 
 ##  Documentação:
-- Acesse a documentação através deste link após estar executando a API: http://localhost:3000/api-docs/
-- Obs: Coloque a porta que você configurou, neste exemplo estou utilizando a porta 3000.
+  - Acesse a documentação através deste link após estar executando a API: http://localhost:3000/api-docs/
+  - Obs: Coloque a porta que você configurou, neste exemplo estou utilizando a porta 3000.
+
+## Arquivo Insominia:
+# Você pode utilizar o arquivo API-imobiliaria.json no seu insomnia para debug das rotas
+  - Abra o insomnia
+  - No seu ambiente do insomnia vá em create
+  - File
+  - Encontre o arquivo API-imobiliaria.json que esta na raiz e abra no seu insomnia.
