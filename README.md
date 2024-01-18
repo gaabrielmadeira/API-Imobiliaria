@@ -36,3 +36,4 @@ Esta API permite realizar o cadastro de imóveis e de usuários interessados na 
 
 ##  Documentação:
 - Acesse a documentação através deste link após estar executando a API: http://localhost:3000/api-docs/
+- Obs: Coloque a porta que você configurou, neste exempl esotu utilizando a porta 3000.
