@@ -24,6 +24,7 @@ const settings = (): DataSourceOptions => {
     type: "postgres",
     url: dbUrl,
     logging: true,
+    synchronize: false,
     entities: [entitiesPath],
     migrations: [migrationPath],
   };
