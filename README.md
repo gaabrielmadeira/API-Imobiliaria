@@ -33,3 +33,6 @@ Esta API permite realizar o cadastro de imóveis e de usuários interessados na 
             EXPIRES_IN=1hr
   - npm install;
   - npm run dev;
+
+##  Documentação:
+- Acesse a documentação através deste link após estar executando a API: http://localhost:3000/api-docs/
