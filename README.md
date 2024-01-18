@@ -21,7 +21,7 @@ Esta API permite realizar o cadastro de imóveis e de usuários interessados na 
    POSTGRES_DB=imobiliaria
    POSTGRES_PASSWORD=1234
 
-  - Execute o comando #Docker-compose up no seu terminal.
+  - Execute o comando ####Docker-compose up no seu terminal.
 
 ## Sem docker:
   - Configure o arquivo .env:
@@ -31,7 +31,7 @@ Esta API permite realizar o cadastro de imóveis e de usuários interessados na 
             DATABASE_URL=postgres://postgres:1234@localhost:5432/imobiliaria
             SECRET_KEY=(crie uma secret key)
             EXPIRES_IN=1hr
-  # Execute os seguinte comandos no terminla:
+  ### Execute os seguintes comandos no terminal:
   - npm install;
   - npm run typeorm migration:generate src/migrations/firstMigration -- -d src/data-source;
   - npm run typeorm migration:run -- -d src/data-source;
