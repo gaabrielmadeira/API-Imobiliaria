@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  back:
+    container_name: imobiliaria_api
+    build:
+      context: ./
+    ports:
+      - $PORT:$PORT
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy 
+    command: sh -c "npm run typeorm migration:generate src/migrations/firstMigration -- -d src/data-source && npm run typeorm migration:run -- -d src/data-source && npm run dev"
+    volumes:
+      - ./:/app
+  
+  db:
+    container_name: imobiliaria_db
+    image: postgres:15.5-alpine
+    ports:
+      - $PGPORT:$PGPORT
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
