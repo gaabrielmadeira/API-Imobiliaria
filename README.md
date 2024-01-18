@@ -23,7 +23,7 @@ Esta API permite realizar o cadastro de imóveis e de usuários interessados na 
 
   - Docker-compose up. (Necessita do docker e docker compose previamente instalado na sua máquina)
 
-## Executando localmente:
+## Sem docker:
   - Configure o arquivo .env:
   - Crie um arquivo .env na raiz, copie tudo que esta no arquivo .env.example para dentro do arquivo .env que você criou e preencha com os dados do seu banco de       dados criado localmente, sugestão:
     ```env
@@ -32,6 +32,8 @@ Esta API permite realizar o cadastro de imóveis e de usuários interessados na 
             SECRET_KEY=(crie uma secret key)
             EXPIRES_IN=1hr
   - npm install;
+  - npm run typeorm migration:generate src/migrations/firstMigration -- -d src/data-source;
+  - npm run typeorm migration:run -- -d src/data-source;
   - npm run dev;
 
 ##  Documentação:
