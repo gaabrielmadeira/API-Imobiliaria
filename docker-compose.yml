@@ -12,8 +12,6 @@ services:
       db:
         condition: service_healthy 
     command: sh -c "npm run typeorm migration:generate src/migrations/firstMigration -- -d src/data-source && npm run typeorm migration:run -- -d src/data-source && npm run dev"
-    volumes:
-      - ./:/app
   
   db:
     container_name: imobiliaria_db
